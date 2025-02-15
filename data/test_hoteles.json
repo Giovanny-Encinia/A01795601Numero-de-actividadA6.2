@@ -1,0 +1,14 @@
+[
+    {
+        "nombre": "Hotel A",
+        "ubicacion": "Ubicación A",
+        "habitaciones": 10,
+        "reservas": []
+    },
+    {
+        "nombre": "Hotel B",
+        "ubicacion": "Ubicación B",
+        "habitaciones": 5,
+        "reservas": []
+    }
+]

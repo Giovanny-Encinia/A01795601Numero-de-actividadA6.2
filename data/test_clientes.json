@@ -1,0 +1,10 @@
+[
+    {
+        "nombre": "Cliente A",
+        "email": "clienteA@example.com"
+    },
+    {
+        "nombre": "Cliente B",
+        "email": "clienteB@example.com"
+    }
+]
