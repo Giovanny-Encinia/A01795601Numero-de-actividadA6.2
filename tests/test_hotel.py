@@ -89,6 +89,8 @@ class TestSistemaReservas(unittest.TestCase):
         hotel = self.sistema.mostrar_hotel(name)
         self.assertEqual(len(hotel["reservas"]), 0)
 
+    ####################  Casos Negativos #############################
+    
     def test_eliminar_hotel_inexistente(self):
         """Prueba la eliminación de un hotel inexistente."""
         self.sistema.eliminar_hotel("Hotel Inexistente")
@@ -102,6 +104,28 @@ class TestSistemaReservas(unittest.TestCase):
         self.sistema.modificar_hotel(name, ubicacion, 15)
         hotel = self.sistema.mostrar_hotel(name)
         self.assertIsNone(hotel)
+    
+    def test_crear_reserva_cliente_inexistente(self):
+        """Prueba la creación de una reserva con un cliente inexistente."""
+        self.sistema.crear_reserva(
+            "clienteInexistente@example.com", "Hotel A", "2023-10-01"
+        )
+        hotel = self.sistema.mostrar_hotel("Hotel A")
+        self.assertEqual(len(hotel["reservas"]), 0)
+
+    def test_crear_reserva_hotel_inexistente(self):
+        """Prueba la creación de una reserva con un hotel inexistente."""
+        self.sistema.crear_reserva(
+            "clienteA@example.com", "Hotel Inexistente", "2023-10-01"
+        )
+        hotel = self.sistema.mostrar_hotel("Hotel Inexistente")
+        self.assertIsNone(hotel)
+
+    def test_cancelar_reserva_inexistente(self):
+        """Prueba la cancelación de una reserva inexistente."""
+        self.sistema.cancelar_reserva("clienteA@example.com", "Hotel A", "2023-10-01")
+        hotel = self.sistema.mostrar_hotel("Hotel A")
+        self.assertEqual(len(hotel["reservas"]), 0)
 
 
 if __name__ == "__main__":
